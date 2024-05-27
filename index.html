@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<script>
+
+    var links = {
+    001: "https://vk.com/axen_ov",
+    002: "https://vk.com/sloret"
+
+    }
+
+</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Алые Паруса 2024</title>
+    <script>
+        var result = null,
+            tmp = [];
+        location.search
+            .substr(1)
+            .split("&")
+            .forEach(function (item) {
+                tmp = item.split("=");
+                if (tmp[0] === "id") result = decodeURIComponent(tmp[1]);
+            });
+        console.log(result);
+
+    </script>
+</head>
+<body>
+<div id="texter"></div>
+</body>
+<script>
+    var contentDiv = document.getElementById('texter');
+    var newLink = document.createElement('a');
+
+    newLink.href = links[result];
+    newLink.textContent = 'Если переадресация не произошла сама, нажмите сюда';
+
+    if (result in links) {
+        window.location.href = links[result];
+        contentDiv.appendChild(newLink);
+    } else {
+        document.getElementById("texter").textContent="Кажется, что-то сломалось \\";
+    }
+
+</script>
+</html>
